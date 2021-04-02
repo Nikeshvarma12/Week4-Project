@@ -3,7 +3,9 @@ body {
   padding: 20px;
   margin: 0;
 }
-
+h1, h2, p, ul, li {
+  font-family:cursive;
+}
 ul.navlink li {
   display: inline;
   list-style-type: none;
@@ -11,25 +13,21 @@ ul.navlink li {
 }
 ul.navlink {
   background-color: #111;
-
   padding: 0;
 }
 ul.navlink li a {
   color: #FFF;
-  font-weight: cursive;
+  font-weight: bold;
   text-decoration: none;
   padding: 20px;
   display: inline-block;
 }
-/* .c {
-  background-color: #FFF;
-  padding: 20px;
-}
+
 .c h2 {
   padding: 0;
+  font-family: cursive;
   margin: 0;
-} */
+}
 .c li {
   margin-bottom: 10px;
-  font-size: 20px;
 }

@@ -3,12 +3,12 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      player1: 1,
-      player2: 2,
+      p1: 1,
+      p2: 2,
       currentPlayer: null,
       board: [],
       gameOver: false,
-      message: ''
+      msg: ''
     };
     // Bind play function to App component
     this.play = this.play.bind(this);
@@ -24,13 +24,13 @@ class App extends Component {
     }
     this.setState({
       board,
-      currentPlayer: this.state.player1,
+      currentPlayer: this.state.p1,
       gameOver: false,
-      message: ''
+      msg: ''
     });
   }
   togglePlayer() {
-    return (this.state.currentPlayer === this.state.player1) ? this.state.player2 : this.state.player1;
+    return (this.state.currentPlayer === this.state.p1) ? this.state.p2 : this.state.p1;
   }
   play(c) {
     if (!this.state.gameOver) {
@@ -44,20 +44,20 @@ class App extends Component {
       }
       // Check status of board
       let result = this.checkAll(board);
-      if (result === this.state.player1) {
-        this.setState({ board, gameOver: true, message: 'Player 1 (red) wins!' });
-      } else if (result === this.state.player2) {
-        this.setState({ board, gameOver: true, message: 'Player 2 (yellow) wins!' });
+      if (result === this.state.p1) {
+        this.setState({ board, gameOver: true, msg: 'Player 1 (red) wins!' });
+      } else if (result === this.state.p2) {
+        this.setState({ board, gameOver: true, msg: 'Player 2 (yellow) wins!' });
       } else if (result === 'draw') {
-        this.setState({ board, gameOver: true, message: 'Draw game.' });
+        this.setState({ board, gameOver: true, msg: 'Draw game.' });
       } else {
         this.setState({ board, currentPlayer: this.togglePlayer() });
       }
     } else {
-      this.setState({ message: 'Game over. Please start a new game.' });
+      this.setState({ msg: 'Game over. Please start a new game.' });
     }
   }
-  checkVertical(board) {
+  vertical(board) {
     // Check only if row is 3 or greater
     for (let r = 3; r < 6; r++) {
       for (let c = 0; c < 7; c++) {
@@ -71,7 +71,7 @@ class App extends Component {
       }
     }
   }
-  checkHorizontal(board) {
+  Horizantal(board) {
     // Check only if column is 3 or less
     for (let r = 0; r < 6; r++) {
       for (let c = 0; c < 4; c++) {
@@ -85,7 +85,7 @@ class App extends Component {
       }
     }
   }
-  checkDiagonalRight(board) {
+ DiagonalRight(board) {
     // Check only if row is 3 or greater AND column is 3 or less
     for (let r = 3; r < 6; r++) {
       for (let c = 0; c < 4; c++) {
@@ -99,7 +99,7 @@ class App extends Component {
       }
     }
   }
-  checkDiagonalLeft(board) {
+  DiagonalLeft(board) {
     // Check only if row is 3 or greater AND column is 3 or greater
     for (let r = 3; r < 6; r++) {
       for (let c = 3; c < 7; c++) {
@@ -124,7 +124,7 @@ class App extends Component {
     return 'draw';    
   }
   checkAll(board) {
-    return this.checkVertical(board) || this.checkDiagonalRight(board) || this.checkDiagonalLeft(board) || this.checkHorizontal(board) || this.checkDraw(board);
+    return this.vertical(board) || this.DiagonalRight(board) || this.DiagonalLeft(board) || this.Horizantal(board) || this.checkDraw(board);
   }
   componentWillMount() {
     this.initBoard();
@@ -133,7 +133,7 @@ class App extends Component {
     return (
       <div>
         <div className="button" onClick={() => {this.initBoard()}}>Restart</div>
-        <p className="message">{this.state.message}</p>
+        <p className="msg">{this.state.msg}</p>
         <table>
           <thead>
           </thead>

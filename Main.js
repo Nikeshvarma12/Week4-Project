@@ -5,8 +5,8 @@ import {
     HashRouter
   } from "react-router-dom";
   import Home from "./Home";
-  import player from "./player";
-  import game from "./game";
+  import Stuff from "./player";
+  import App from "./game";
 class Main extends Component {
   render() {
     return (
@@ -16,12 +16,12 @@ class Main extends Component {
           <ul class="navlink">
           <li><NavLink exact to="/">Home</NavLink></li>
             <li><NavLink to="/player">Player Info</NavLink></li>
-            <li><NavLink to="/game">Game</NavLink></li>
+       
           </ul>
           <div class="c">
           <Route exact path="/" component={Home}/>
-            <Route path="/player" component={player}/>
-            <Route path="/game" component={game}/>
+            <Route path="/player" component={Stuff}/>
+            <Route path="/game" component={App}/>
           </div>
         </div>
         </HashRouter>
